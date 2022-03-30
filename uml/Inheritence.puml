@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class FlyingObject
+abstract class AbstractFlyingObject
 {
     # int locationX
     # int locationY
@@ -33,6 +33,7 @@ abstract class AbstractAircraft
     + decreaseHp(int decrease):void
     + getHp():int
     + {abstract} shoot():List<Bullet>
+    + {abstract} prop():AbstractProp
  }
 
 abstract class AbstractBullet
@@ -50,13 +51,34 @@ abstract class AbstractProp{
     + effect():int
 }
 
-FlyingObject <|-- AbstractAircraft
-FlyingObject <|-- AbstractBullet
-FlyingObject <|-- AbstractProp
+interface EnemyFactory{
+    + creatEnemy(int locationX, int locationY, int speedX, int speedY, int hp):AbstractAircraft
+}
+
+interface PropFactory{
+    + creatProp(int locationX, int locationY, int speedX, int speedY, int direction):AbstractProp
+}
+
+Game ..> AbstractAircraft
+Game ..> EnemyFactory
+Game ..> AbstractProp
+Game ..> PropFactory
+
+AbstractFlyingObject <|-- AbstractAircraft
+AbstractFlyingObject <|-- AbstractBullet
+AbstractFlyingObject <|-- AbstractProp
 
 AbstractAircraft <|-- HeroAircraft
 AbstractAircraft <|-- MobEnemy
 AbstractAircraft <|-- EliteEnemy
+
+EnemyFactory <|-- MobFactory
+EnemyFactory <|-- EliteFactory
+EnemyFactory <|-- BossFactory
+
+MobFactory ..> MobEnemy
+EliteFactory ..> EliteEnemy
+BossFactory ..> BossEnemy
 
 AbstractBullet <|-- HeroBullet
 AbstractBullet <|-- EnemyBullet
@@ -65,11 +87,48 @@ AbstractProp <|-- Blood
 AbstractProp <|-- Boom
 AbstractProp <|-- Fire
 
+PropFactory <|-- BloodFactory
+PropFactory <|-- BoomFactory
+PropFactory <|-- FireFactory
+
+BloodFactory ..> Blood
+BoomFactory ..> Boom
+FireFactory ..> Fire
+
+
+class Game{
+}
+
+class BloodFactory{
+    + creatProp(int locationX, int locationY, int speedX, int speedY, int direction):AbstractProp
+}
+
+class BoomFactory{
+    + creatProp(int locationX, int locationY, int speedX, int speedY, int direction):AbstractProp
+}
+
+class FireFactory{
+    + creatProp(int locationX, int locationY, int speedX, int speedY, int direction):AbstractProp
+}
+
+class MobFactory{
+    + creatEnemy(int locationX, int locationY, int speedX, int speedY, int hp):AbstractAircraft
+}
+
+class EliteFactory{
+    + creatEnemy(int locationX, int locationY, int speedX, int speedY, int hp):AbstractAircraft
+}
+class BossFactory{
+    + creatEnemy(int locationX, int locationY, int speedX, int speedY, int hp):AbstractAircraft
+}
+
 class HeroAircraft {
     - int shootNum
     - int power
     - int direction
-    + HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp):void
+    - HeroAircraft heroAircraft
+    - HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp):void
+    + getHeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp):HeroAircraft
     + forward():void
     + shoot():List<Bullet>
 }
@@ -101,7 +160,7 @@ class EnemyBullet {
 
 class Blood {
     - power
-    + Blood(int locationX, int locationY, int speedX, int speedY, int direction, int power):void
+    + Blood(int locationX, int locationY, int speedX, int speedY, int direction):void
     + effect():int
 }
 

@@ -1,16 +1,11 @@
 package edu.hitsz.aircraft;
 
-import edu.hitsz.application.Game;
 import edu.hitsz.application.Main;
-import edu.hitsz.bullet.AbstractBullet;
+import edu.hitsz.bullet.BaseBullet;
 import edu.hitsz.prop.AbstractProp;
-import edu.hitsz.prop.Blood;
-import edu.hitsz.prop.Boom;
-import edu.hitsz.prop.Fire;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 普通敌机
@@ -33,13 +28,15 @@ public class MobEnemy extends AbstractAircraft {
         }
     }
 
-    @Override
-    public List<AbstractBullet> shoot() {
-        return new LinkedList<>();
-    }
+
 
     @Override
     public AbstractProp prop(){
         return null;
+    }
+
+    @Override
+    public List<BaseBullet> shoot() {
+        return new LinkedList<>();
     }
 }

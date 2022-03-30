@@ -1,14 +1,17 @@
 package edu.hitsz.prop;
 
 import edu.hitsz.application.Main;
-import edu.hitsz.basic.FlyingObject;
+import edu.hitsz.basic.AbstractFlyingObject;
 
-public abstract class AbstractProp extends FlyingObject {
+/**
+ * @Xwc hitsz
+ */
+public abstract class AbstractProp extends AbstractFlyingObject {
     /**
      *
      * 移动方向
      */
-    private int direction ;
+    private final int direction ;
 
 
     public AbstractProp(int locationX, int locationY, int speedX, int speedY, int direction) {

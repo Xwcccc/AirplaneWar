@@ -1,7 +1,7 @@
 package edu.hitsz.aircraft;
 
-import edu.hitsz.bullet.AbstractBullet;
-import edu.hitsz.basic.FlyingObject;
+import edu.hitsz.bullet.BaseBullet;
+import edu.hitsz.basic.AbstractFlyingObject;
 import edu.hitsz.prop.AbstractProp;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author hitsz
  */
-public abstract class AbstractAircraft extends FlyingObject {
+public abstract class AbstractAircraft extends AbstractFlyingObject {
     /**
      * 生命值
      */
@@ -41,14 +41,13 @@ public abstract class AbstractAircraft extends FlyingObject {
         return hp;
     }
 
-
     /**
-     * 飞机射击方法，可射击对象必须实现
+     * 射出子弹
      * @return
-     *  可射击对象需实现，返回子弹
-     *  非可射击对象空实现，返回null
+     *  英雄机和精英机射出子弹
+     *  不具有射击功能的，返回null
      */
-    public abstract List<AbstractBullet> shoot();
+    public abstract List<BaseBullet> shoot();
 
     /**
      * 飞机道具
