@@ -1,7 +1,7 @@
 package edu.hitsz.bullet;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class HeroBullet extends BaseBullet {
 

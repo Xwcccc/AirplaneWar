@@ -10,7 +10,7 @@ import java.util.List;
  * 所有种类飞机的抽象父类：
  * 敌机（BOSS, ELITE, MOB），英雄飞机
  *
- * @author hitsz
+ * @author xwc
  */
 public abstract class AbstractAircraft extends AbstractFlyingObject {
     /**
@@ -22,7 +22,7 @@ public abstract class AbstractAircraft extends AbstractFlyingObject {
     public AbstractAircraft(int locationX, int locationY, int speedX, int speedY, int hp) {
         super(locationX, locationY, speedX, speedY);
         this.hp = hp;
-        this.maxHp = hp;
+        this.maxHp = 1000;
     }
 
     public void decreaseHp(int decrease){
@@ -34,7 +34,9 @@ public abstract class AbstractAircraft extends AbstractFlyingObject {
     }
 
     public void increaseHp(int increase){
-        hp += increase;
+        if(hp+increase < maxHp ){
+            hp += increase;
+        }
     }
 
     public int getHp() {

@@ -18,7 +18,7 @@ import java.util.concurrent.*;
 /**
  * 游戏主面板，游戏启动
  *
- * @author hitsz
+ * @author xwc
  */
 public class Game extends JPanel {
 
@@ -46,6 +46,7 @@ public class Game extends JPanel {
     private int score = 0;
     private int time = 0;
     private int count;
+    final int even = 2;
     /**
      * 周期（ms)
      * 指示子弹的发射、敌机的产生频率
@@ -66,7 +67,7 @@ public class Game extends JPanel {
         enemyBullets = new LinkedList<>();
         enemyProps = new LinkedList<>();
         //Scheduled 线程池，用于定时任务调度
-        executorService = new ScheduledThreadPoolExecutor(1);
+        executorService = new ScheduledThreadPoolExecutor(1,new NamedThreadFactory("GameSchedule1"));
 
         //启动英雄机鼠标监听
         new HeroController(this, heroAircraft);
@@ -89,7 +90,7 @@ public class Game extends JPanel {
                 // 新敌机产生
                 count = 0;
                 if (enemyAircrafts.size() < enemyMaxNumber) {
-                    if (ran % 2 == 1) {
+                    if (ran % even == 1) {
                         enemyAircrafts.add(new MobFactory().creatEnemy(
                                 (int) (Math.random() * (Main.WINDOW_WIDTH - ImageManager.MOB_ENEMY_IMAGE.getWidth())) * 1,
                                 (int) (Math.random() * Main.WINDOW_HEIGHT * 0.2) * 1,
@@ -298,15 +299,13 @@ public class Game extends JPanel {
             this.backGroundTop = 0;
         }
 
-        // 先绘制子弹，后绘制飞机
-        // 这样子弹显示在飞机的下层
+        // 先绘制子弹和道具，后绘制飞机
+        // 这样子弹或道具显示在飞机的下层
         paintImageWithPositionRevised(g, enemyBullets);
         paintImageWithPositionRevised(g, heroBullets);
-
-        paintImageWithPositionRevised(g, enemyAircrafts);
-
         paintImageWithPositionRevised(g, enemyProps);
 
+        paintImageWithPositionRevised(g, enemyAircrafts);
         g.drawImage(ImageManager.HERO_IMAGE, heroAircraft.getLocationX() - ImageManager.HERO_IMAGE.getWidth() / 2,
                 heroAircraft.getLocationY() - ImageManager.HERO_IMAGE.getHeight() / 2, null);
 

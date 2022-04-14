@@ -4,7 +4,7 @@ import edu.hitsz.prop.AbstractProp;
 import edu.hitsz.prop.Fire;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class FireFactory implements PropFactory{
     @Override

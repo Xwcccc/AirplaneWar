@@ -4,7 +4,7 @@ import edu.hitsz.aircraft.AbstractAircraft;
 import edu.hitsz.aircraft.MobEnemy;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class MobFactory implements EnemyFactory{
     @Override

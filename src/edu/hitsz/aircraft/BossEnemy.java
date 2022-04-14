@@ -6,7 +6,7 @@ import edu.hitsz.prop.AbstractProp;
 import java.util.List;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class BossEnemy extends AbstractAircraft {
     public BossEnemy(int locationX, int locationY, int speedX, int speedY, int hp) {

@@ -4,7 +4,7 @@ import edu.hitsz.application.Main;
 import edu.hitsz.basic.AbstractFlyingObject;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public abstract class AbstractProp extends AbstractFlyingObject {
     /**
@@ -36,6 +36,9 @@ public abstract class AbstractProp extends AbstractFlyingObject {
             vanish();
         }
     }
-
+    /**
+     * 道具产生效果函数
+     * @return 效果成功产生返回1，反之0（加血道具返回power）
+     */
     public abstract int effect();
 }

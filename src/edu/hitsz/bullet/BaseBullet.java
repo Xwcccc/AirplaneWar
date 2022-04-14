@@ -7,7 +7,7 @@ import edu.hitsz.basic.AbstractFlyingObject;
  * 子弹类。
  * 也可以考虑不同类型的子弹
  *
- * @author hitsz
+ * @author xwc
  */
 public class BaseBullet extends AbstractFlyingObject {
 

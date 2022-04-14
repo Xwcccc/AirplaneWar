@@ -11,7 +11,7 @@ import java.util.List;
  * 普通敌机
  * 不可射击
  *
- * @author hitsz
+ * @author xwc
  */
 public class MobEnemy extends AbstractAircraft {
 

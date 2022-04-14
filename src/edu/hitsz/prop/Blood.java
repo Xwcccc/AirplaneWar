@@ -1,5 +1,8 @@
 package edu.hitsz.prop;
 
+/**
+ * @author xwc
+ */
 public class Blood extends AbstractProp{
     private final int power = 10;
 
@@ -9,6 +12,7 @@ public class Blood extends AbstractProp{
 
     @Override
     public int effect() {
+        System.out.println("Add power "+power);
         return power;
     }
 }

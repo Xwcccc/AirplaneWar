@@ -3,7 +3,7 @@ package edu.hitsz.factory;
 import edu.hitsz.aircraft.AbstractAircraft;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class BossFactory implements EnemyFactory{
     @Override

@@ -4,7 +4,7 @@ import edu.hitsz.aircraft.AbstractAircraft;
 import edu.hitsz.aircraft.EliteEnemy;
 
 /**
- * @Xwc hitsz
+ * @author xwc
  */
 public class EliteFactory implements EnemyFactory{
     @Override
